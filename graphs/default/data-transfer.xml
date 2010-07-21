@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+
+<graph>
+
+<description>
+Servers and Clients for Data Transfer
+bbftp-client
+bbftp-server
+</description>
+
+<copyright>
+Copyright (c) 2000 - 2009 The Regents of the University of California.
+All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
+</copyright>
+
+<changelog>
+</changelog>
+
+<edge from="base">
+  <to>bbftpc-common</to>
+</edge>
+<order head="base">
+  <tail>bbftpc-common</tail>
+</order>
+
+<edge from="base">
+  <to>bbftpd-common</to>
+</edge>
+<order head="base">
+  <tail>bbftpd-common</tail>
+</order>
+
+</graph>
