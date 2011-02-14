@@ -1,0 +1,13 @@
+<preface id="preface" xreflabel="preface">
+<title>Preface</title>
+
+
+<para>
+
+The Data-Transfer roll provides the bbftp file transfer client and server for a
+Rocks cluster.  It places the bbftp binaries in /opt/bbftp/bin on both server
+and client nodes.
+
+</para>
+
+</preface>
