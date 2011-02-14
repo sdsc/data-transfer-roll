@@ -3,12 +3,13 @@
 <kickstart>
 
 <description>
-BBFTP Client
+Data-Transfer roll
+BBFTP Client/Server
 http://doc.in2p3.fr/bbftp
 </description>
 
 <copyright>
-Copyright (c) 2000 - 2009 The Regents of the University of California.
+Copyright (c) 2000 - 2011 The Regents of the University of California.
 All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </copyright>
 
@@ -16,14 +17,15 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </changelog>
 
 <package>bbftpc</package>
+<package>bbftpd</package>
 
 <post>
 
-<file name="/etc/profile.d/bbftpc.csh" perms="0644">
+<file name="/etc/profile.d/bbftp.csh" perms="0644">
 set path = ( /opt/bbftp/bin $path )
 </file>
 
-<file name="/etc/profile.d/bbftpc.sh" perms="0644">
+<file name="/etc/profile.d/bbftp.sh" perms="0644">
 export PATH=/opt/bbftp/bin:$PATH
 </file>
 
