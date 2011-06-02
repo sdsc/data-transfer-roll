@@ -37,6 +37,13 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
   <tail>data-transfer-doc</tail>
 </order>
 
+<edge from="base">
+  <to>data-transfer-roll-test</to>
+</edge>
+<order head="base">
+  <tail>data-transfer-roll-test</tail>
+</order>
+
 <order head="data-transfer-common">
   <tail>data-transfer-modules-common</tail>
 </order>
