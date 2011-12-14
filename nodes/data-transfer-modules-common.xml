@@ -6,6 +6,8 @@
 Data-Transfer roll module files
 BBFTP
 http://doc.in2p3.fr/bbftp
+BBCP
+http://www.slac.stanford.edu/~abh/bbcp
 </description>
 
 <copyright>
@@ -21,7 +23,7 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 # Remove /etc/profile.d files in favor of loadable modules when available
 if test -f /etc/profile.d/bbftp.sh; then
 
-  /bin/rm -f /etc/profile.d/bbftp.*
+  /bin/rm -f /etc/profile.d/bbftp.* /etc/profile.d/bbcp.*
 
   if test `grep -c /opt/modulefiles/applications /etc/profile.d/modules.csh` = 0; then
     echo 'setenv MODULEPATH /opt/modulefiles/applications:$MODULEPATH' >> \
@@ -32,19 +34,36 @@ if test -f /etc/profile.d/bbftp.sh; then
          /etc/profile.d/modules.sh
   fi
 
+# BBFTP
+
   /bin/mkdir -m 0755 -p /opt/modulefiles/applications/bbftp
 
 <file name="/opt/modulefiles/applications/bbftp/320" perms="0644">
 #%Module1.0
 prepend-path PATH /opt/bbftp/bin
 </file>
-
 <file name="/opt/modulefiles/applications/bbftp/.version.320">
 #%Module1.0
 set ModulesVersion "320"
 </file>
 
   /bin/ln -s /opt/modulefiles/applications/bbftp/.version.320 \
+             /opt/modulefiles/applications/bbftp/.version
+
+# BBCP
+
+  /bin/mkdir -m 0755 -p /opt/modulefiles/applications/bbcp
+
+<file name="/opt/modulefiles/applications/bbcp/10.08.29" perms="0644">
+#%Module1.0
+prepend-path PATH /opt/bbcp/bin
+</file>
+<file name="/opt/modulefiles/applications/bbftp/.version.10.08.29">
+#%Module1.0
+set ModulesVersion "10.08.29"
+</file>
+
+  /bin/ln -s /opt/modulefiles/applications/bbftp/.version.10.08.29 \
              /opt/modulefiles/applications/bbftp/.version
 
 fi

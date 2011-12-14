@@ -1,0 +1,3 @@
+NAME    = bbcp
+VERSION = 10.08.29
+RELEASE = 1
