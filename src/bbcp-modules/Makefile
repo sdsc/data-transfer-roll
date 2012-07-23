@@ -53,30 +53,21 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 # @Copyright@
-#
 
-PKGROOT     = /opt/bbftp
-SOURCE = bbftpd-$(VERSION)
-REDHAT.ROOT = $(PWD)/../../
-RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
+PKGROOT = /opt/modulefiles/applications/bbcp
+REDHAT.ROOT = $(CURDIR)/../../
+
 -include $(ROCKSROOT)/etc/Rules.mk
-
+include Rules.mk
 
 build:
-	tar zxvf $(SOURCE).tgz
-	cp patch-files/port_sys.h $(SOURCE)/includes/
-	( \
-	  cd $(NAME)-$(VERSION)/bbftpd; \
-	  ./configure --prefix=$(PKGROOT); \
-          make _SX=1 \
- 	)
 
 install::
-	mkdir -p $(ROOT)/$(PKGROOT)
-	( \
-	  cd $(NAME)-$(VERSION)/bbftpd; \
-	  make prefix=$(ROOT)/$(PKGROOT) install \
-	)
+	  mkdir -p $(ROOT)/$(PKGROOT)
+	  cp bbcp.module $(ROOT)/$(PKGROOT)/$(VERSION)
+	  cp bbcp.version $(ROOT)/$(PKGROOT)/.version.$(VERSION)
+	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/$(VERSION)
+	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/.version.$(VERSION)
+	  ln -s $(PKGROOT)/.version.$(VERSION) $(ROOT)/$(PKGROOT)/.version
 
 clean::
-	rm -rf $(NAME)-$(VERSION)

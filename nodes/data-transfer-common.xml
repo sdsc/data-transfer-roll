@@ -21,23 +21,7 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 <package>bbftpc</package>
 <package>bbftpd</package>
 <package>bbcp</package>
-
-<post>
-
-<file name="/etc/profile.d/bbftp.csh" perms="0644">
-set path = ( /opt/bbftp/bin $path )
-</file>
-<file name="/etc/profile.d/bbftp.sh" perms="0644">
-export PATH=/opt/bbftp/bin:$PATH
-</file>
-
-<file name="/etc/profile.d/bbcp.csh" perms="0644">
-set path = ( /opt/bbcp/bin $path )
-</file>
-<file name="/etc/profile.d/bbcp.sh" perms="0644">
-export PATH=/opt/bbcp/bin:$PATH
-</file>
-
-</post>
+<package>bbftp-modules</package>
+<package>bbcp-modules</package>
 
 </kickstart>

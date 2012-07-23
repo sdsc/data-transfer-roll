@@ -23,13 +23,6 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
   <tail>data-transfer-common</tail>
 </order>
 
-<edge from="envmodules-common">
-  <to>data-transfer-modules-common</to>
-</edge>
-<order head="envmodules-common">
-  <tail>data-transfer-modules-common</tail>
-</order>
-
 <edge from="server">
   <to>data-transfer-doc</to>
 </edge>
@@ -42,10 +35,6 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </edge>
 <order head="base">
   <tail>data-transfer-roll-test</tail>
-</order>
-
-<order head="data-transfer-common">
-  <tail>data-transfer-modules-common</tail>
 </order>
 
 </graph>
