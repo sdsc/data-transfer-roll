@@ -30,6 +30,7 @@ use Test::More qw(no_plan);
 my $appliance = $#ARGV >= 0 ? $ARGV[0] :
                 -d '/export/rocks/install' ? 'Frontend' : 'Compute';
 my $installedOnAppliancesPattern = '.';
+my $bbcpPath = '/opt/bbcp/bin/bbcp';
 my $bbftpHome = '/opt/bbftp';
 my $isInstalled = -d $bbftpHome;
 my $output;
@@ -64,7 +65,7 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
 
 SKIP: {
 
-  skip 'bbftp not installed', 7 if ! $isInstalled;
+  skip 'bbftp not installed', 8 if ! $isInstalled;
   `/usr/sbin/useradd -d /tmp/$TESTUSER -s /sbin/nologin -g 100 $TESTUSER`;
   `/usr/bin/expect $TESTFILE.pass.exp`;
   `$bbftpHome/etc/bbftpd start`;
@@ -72,6 +73,10 @@ SKIP: {
   `$bbftpHome/etc/bbftpd stop`;
   ok(-f 'motd', 'bbftp works');
   `/usr/sbin/userdel -r $TESTUSER`;
+  `/bin/rm -f motd`;
+
+  `$bbcpPath -S "ssh -x -a -oFallBackToRsh=no %I -l %U %H $bbcpPath" triton-47:/etc/motd motd`;
+  ok(-f 'motd', 'bbcp works');
   `/bin/rm -f motd`;
 
   skip 'modules not installed', 6 if ! -f '/etc/profile.d/modules.sh';
@@ -89,8 +94,6 @@ SKIP: {
      'bbcp version module link created');
 
 }
-
-# TODO test bbcp
 
 # data-transfer-doc.xml
 SKIP: {
