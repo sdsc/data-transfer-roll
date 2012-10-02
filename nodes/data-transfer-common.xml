@@ -23,5 +23,6 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 <package>bbcp</package>
 <package>bbftp-modules</package>
 <package>bbcp-modules</package>
+<package>data-transfer-roll-test</package>
 
 </kickstart>
