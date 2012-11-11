@@ -1,2 +1,3 @@
 #%Module1.0
+setenv BBCPHOME /opt/bbcp
 prepend-path PATH /opt/bbcp/bin

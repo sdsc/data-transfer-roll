@@ -1,2 +1,3 @@
 #%Module1.0
+setenv BBFTPHOME /opt/bbftp
 prepend-path PATH /opt/bbftp/bin
