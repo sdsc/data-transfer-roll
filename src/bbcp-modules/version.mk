@@ -1,3 +1,3 @@
 NAME    = bbcp-modules
-VERSION = 12.01.30
-RELEASE = 1
+VERSION = 12.08.17
+RELEASE = 0
