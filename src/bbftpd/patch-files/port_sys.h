@@ -1,3 +1,4 @@
+#ifdef _SX
 #include <string.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -6,6 +7,7 @@
 #include <arpa/inet.h>
 #include <sys/statfs.h>
 #define HAVE_STRUCT_STATFS
+#endif
 #include <stdio.h>
 
 #ifdef IRIX
