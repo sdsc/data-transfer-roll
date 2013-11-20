@@ -1,13 +1,13 @@
-# 
 # $Id$
 #
 # @Copyright@
 # 
-# 				Rocks(tm)
+# 				Rocks(r)
 # 		         www.rocksclusters.org
-# 		        version 4.3 (Mars Hill)
+# 		         version 5.6 (Emerald Boa)
+# 		         version 6.1 (Emerald Boa)
 # 
-# Copyright (c) 2000 - 2011 The Regents of the University of California.
+# Copyright (c) 2000 - 2013 The Regents of the University of California.
 # All rights reserved.	
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,7 @@
 # 3. All advertising and press materials, printed or electronic, mentioning
 # features or use of this software must display the following acknowledgement: 
 # 
-# 	"This product includes software developed by the Rocks(tm)
+# 	"This product includes software developed by the Rocks(r)
 # 	Cluster Group at the San Diego Supercomputer Center at the
 # 	University of California, San Diego and its contributors."
 # 
@@ -54,17 +54,18 @@
 # 
 # @Copyright@
 #
+# $Log$
 
 PKGROOT = /var/www/html/roll-documentation/$(ROLL)/$(VERSION)
 REDHAT.ROOT = $(PWD)/../../
-
 -include $(ROCKSROOT)/etc/Rules.mk
+include Rules.mk
 
 default: $(NAME).spec ../$(NAME)-$(VERSION).tar.gz
 
 html: predoc
 	cp images/select-data-transfer.png images/roll-select-rolls.png
-	jw --backend html --dsl $(PWD)/rocks.dsl#html index.sgml
+	jw --backend html --dsl $(PWD)/rocks.dsl#html index.sgml 
 
 pdf: predoc
 	cp images/select-data-transfer.png images/roll-select-rolls.png
@@ -85,3 +86,5 @@ install:: build
 clean::
 	rm -f *.html
 	rm -f index.pdf
+
+
