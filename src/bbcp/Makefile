@@ -1,13 +1,13 @@
-# --------------------------------------------------- -*- Makefile -*- --
 # $Id$
 #
 # @Copyright@
 # 
 # 				Rocks(r)
 # 		         www.rocksclusters.org
-# 		       version 5.2 (Chimichanga)
+# 		         version 5.6 (Emerald Boa)
+# 		         version 6.1 (Emerald Boa)
 # 
-# Copyright (c) 2000 - 2011 The Regents of the University of California.
+# Copyright (c) 2000 - 2013 The Regents of the University of California.
 # All rights reserved.	
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -54,26 +54,29 @@
 # 
 # @Copyright@
 #
+# $Log$
 
-PKGROOT = /opt/bbcp
-SOURCE = bbcp-$(VERSION)
-REDHAT.ROOT = $(PWD)/../../
+REDHAT.ROOT = $(CURDIR)/../../
 RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
+
 -include $(ROCKSROOT)/etc/Rules.mk
+include Rules.mk
+include pull.mk
 
-build:
-	tar zxvf $(SOURCE).tgz
+build: $(SRC_DIRS)
 	( \
-	  cd $(SOURCE)/src; \
-	  make \
- 	)
-
+	  cd $($BBCP_SOURCE_DIR)/src; \
+	  $(MAKE); \
+	)
+	@echo "::: Package $(NAME) build complete :::"
+	
 install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)/bin
 	( \
-	  cp $(SOURCE)/bin/*/bbcp $(ROOT)/$(PKGROOT)/bin \
+	  cp $(BBCP_SOURCE_DIR)/bin/*/bbcp $(ROOT)/$(PKGROOT)/bin ;\
 	)
+	@echo "::: Package $(NAME) install complete :::"
 
 clean::
-	rm -rf $(SOURCE)
+	rm -rf $(BBCP_SOURCE_DIR)
