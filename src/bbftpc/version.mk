@@ -1,3 +1,14 @@
-NAME    = bbftpc
-VERSION = 3.2.0
-RELEASE = 1
+NAME               = bbftpc
+VERSION            = 3.2.0
+RELEASE            = 1
+PKG_ROOT           = /opt/bbftp
+
+SRC_SUBDIR         = bbftpc
+
+BBFTPC_NAME        = $(NAME)
+BBFTPC_VERSION     = $(VERSION)
+BBFTPC_PKG_SUFFIX  = tgz
+BBFTPC_SOURCE_PKG  = $(BBFTPC_NAME)-$(BBFTPC_VERSION).$(BBFTPC_PKG_SUFFIX)
+BBFTPC_SOURCE_DIR  = $(BBFTPC_SOURCE_PKG:%.$(BBFTPC_PKG_SUFFIX)=%)
+
+TGZ_PKGS           = $(BBFTPC_SOURCE_PKG)
