@@ -1,13 +1,13 @@
-# --------------------------------------------------- -*- Makefile -*- --
 # $Id$
 #
 # @Copyright@
 # 
 # 				Rocks(r)
 # 		         www.rocksclusters.org
-# 		       version 5.2 (Chimichanga)
+# 		         version 5.6 (Emerald Boa)
+# 		         version 6.1 (Emerald Boa)
 # 
-# Copyright (c) 2000 - 2011 The Regents of the University of California.
+# Copyright (c) 2000 - 2013 The Regents of the University of California.
 # All rights reserved.	
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -54,29 +54,31 @@
 # 
 # @Copyright@
 #
+# $Log$
 
-PKGROOT     = /opt/bbftp
-SOURCE = bbftpd-$(VERSION)
-REDHAT.ROOT = $(PWD)/../../
+REDHAT.ROOT = $(CURDIR)/../../
 RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
+
 -include $(ROCKSROOT)/etc/Rules.mk
+include Rules.mk
+include pull.mk
 
-
-build:
-	tar zxvf $(SOURCE).tgz
-	cp patch-files/port_sys.h $(SOURCE)/includes/
+build: $(SRC_DIRS)
+	cp patch-files/port_sys.h $(BBFTPD_SOURCE_DIR)/includes/
 	( \
-	  cd $(NAME)-$(VERSION)/bbftpd; \
+	  cd $($BBFTPD_SOURCE_DIR)/bbftpd; \
 	  ./configure --prefix=$(PKGROOT); \
-          make _SX=1 \
- 	)
-
-install::
-	mkdir -p $(ROOT)/$(PKGROOT)
-	( \
-	  cd $(NAME)-$(VERSION)/bbftpd; \
-	  make prefix=$(ROOT)/$(PKGROOT) install \
+	  $(MAKE) _SX=1 ; \
 	)
+	@echo "::: Package $(NAME) build complete :::"
+	
+install::
+	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
+	( \
+          cd $($BBFTPD_SOURCE_DIR)/bbftpd; \
+	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install; \
+	)
+	@echo "::: Package $(NAME) install complete :::"
 
 clean::
-	rm -rf $(NAME)-$(VERSION)
+	rm -rf $(BBFTPD_SOURCE_DIR)
