@@ -9,9 +9,9 @@ For more information about the various packages included in the data-transfer ro
 - <a href="http://doc.in2p3.fr/bbftp/" target="_blank">bbFTP</a> is a file
 transfer software. It implements its own transfer protocol, which is optimized
 for large files (larger than 2GB) and secure as it does not read the password in
-a file and encrypts the connection information. - <a
-href="http://www.slac.stanford.edu/~abh/bbcp/" target="_blank">BBCP</a> is a
-tool used to securely and quickly copy data from source to target.
+a file and encrypts the connection information.
+- <a href="http://www.slac.stanford.edu/~abh/bbcp/" target="_blank">BBCP</a> is
+a tool used to securely and quickly copy data from source to target.
 
 
 ## Requirements
