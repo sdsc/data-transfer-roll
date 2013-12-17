@@ -65,7 +65,7 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	( \
-	  cd $($BBCP_SOURCE_DIR)/src; \
+	  cd $(BBCP_SOURCE_DIR)/src; \
 	  $(MAKE); \
 	)
 	@echo "::: Package $(NAME) build complete :::"

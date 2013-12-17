@@ -65,7 +65,7 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	( \
-	  cd $($BBFTPC_SOURCE_DIR)/bbftpc; \
+	  cd $(BBFTPC_SOURCE_DIR)/bbftpc; \
 	  ./configure --prefix=$(PKGROOT); \
 	)
 	@echo "::: Package $(NAME) build complete :::"
@@ -73,7 +73,7 @@ build: $(SRC_DIRS)
 install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	( \
-          cd $($BBFTPC_SOURCE_DIR)/bbftpc; \
+          cd $(BBFTPC_SOURCE_DIR)/bbftpc; \
 	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install; \
 	)
 	@echo "::: Package $(NAME) install complete :::"
