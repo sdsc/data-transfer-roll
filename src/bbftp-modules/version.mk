@@ -1,3 +1,3 @@
 NAME    = bbftp-modules
-VERSION = 3.2.0
-RELEASE = 1
+VERSION = 3.2.1
+RELEASE = 0
