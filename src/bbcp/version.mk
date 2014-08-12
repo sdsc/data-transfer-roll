@@ -1,7 +1,7 @@
 NAME             = bbcp
 VERSION          = 12.08.17
 RELEASE          = 0
-PKG_ROOT         = /opt/bbcp
+PKGROOT          = /opt/bbcp
 RPM.EXTRAS         = AutoReq:No
 
 SRC_SUBDIR       = bbcp

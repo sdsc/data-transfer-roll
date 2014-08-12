@@ -3,7 +3,7 @@ VERSION            = 3.2.1
 RELEASE            = 0
 RPM.EXTRAS         = AutoReq:No
 
-PKG_ROOT           = /opt/bbftp
+PKGROOT            = /opt/bbftp
 
 SRC_SUBDIR         = bbftpd
 
