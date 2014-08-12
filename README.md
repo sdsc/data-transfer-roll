@@ -27,7 +27,7 @@ Rocks development machine.
 
 ## Dependencies
 
-Unknown at this time.
+None.
 
 
 ## Building
@@ -70,18 +70,16 @@ in:
 ## Testing
 
 The data-transfer-roll includes a test script which can be run to verify proper
-installation of the data-transfer-roll documentation, binaries and module files. To
-run the test scripts execute the following command(s):
+installation of the data-transfer-roll documentation, binaries and module files.
+To run the test scripts execute the following command(s):
 
 ```shell
 % /root/rolltests/data-transfer.t 
-ok 1 - data-transfer is installed
-ok 2 - data-transfer test run
-ok 3 - data-transfer module installed
-ok 4 - data-transfer version module installed
-ok 5 - data-transfer version module link created
-1..5
 ```
+
+This test temporarily adds a user, so it must be run as root.  To run
+successfully, it requires a passwordless ssh key be added to root's
+~/.ssh/authorized_keys.
 
 ## License
 

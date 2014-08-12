@@ -4,23 +4,15 @@
 
 <description>
 Data-Transfer roll documentation
-BBFTP
-http://doc.in2p3.fr/bbftp
-BBCP
-http://www.slac.stanford.edu/~abh/bbcp
+BBFTP Client/Server http://doc.in2p3.fr/bbftp
+BBCP http://www.slac.stanford.edu/~abh/bbcp
 </description>
 
 <copyright>
-Copyright (c) 2000 - 2011 The Regents of the University of California.
+Copyright (c) 2000 - 2014 The Regents of the University of California.
 All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </copyright>
 
-<changelog>
-</changelog>
-
 <package>roll-data-transfer-usersguide</package>
-
-<post>
-</post>
 
 </kickstart>
