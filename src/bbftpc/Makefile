@@ -65,18 +65,18 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	( \
-	  cd $(BBFTPC_SOURCE_DIR)/bbftpc; \
-	  ./configure --prefix=$(PKGROOT); \
+	  cd $(SOURCE_DIR)/bbftpc; \
+	  ./configure --prefix=$(PKGROOT) \
 	)
 	@echo "::: Package $(NAME) build complete :::"
 	
 install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	( \
-          cd $(BBFTPC_SOURCE_DIR)/bbftpc; \
-	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install; \
+	  cd $(SOURCE_DIR)/bbftpc; \
+	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install \
 	)
 	@echo "::: Package $(NAME) install complete :::"
 
 clean::
-	rm -rf $(BBFTPC_SOURCE_DIR)
+	rm -rf $(SOURCE_DIR)

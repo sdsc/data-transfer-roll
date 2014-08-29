@@ -65,18 +65,16 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	( \
-	  cd $(BBCP_SOURCE_DIR)/src; \
-	  $(MAKE); \
+	  cd $(SOURCE_DIR)/src; \
+	  $(MAKE) \
 	)
 	@echo "::: Package $(NAME) build complete :::"
 	
 install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)/bin
-	( \
-	  cp $(BBCP_SOURCE_DIR)/bin/*/bbcp $(ROOT)/$(PKGROOT)/bin ;\
-	)
+	cp $(SOURCE_DIR)/bin/*/bbcp $(ROOT)/$(PKGROOT)/bin
 	@echo "::: Package $(NAME) install complete :::"
 
 clean::
-	rm -rf $(BBCP_SOURCE_DIR)
+	rm -rf $(SOURCE_DIR)

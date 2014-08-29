@@ -64,21 +64,21 @@ include Rules.mk
 include pull.mk
 
 build: $(SRC_DIRS)
-	cp patch-files/port_sys.h $(BBFTPD_SOURCE_DIR)/includes/
+	cp patch-files/port_sys.h $(SOURCE_DIR)/includes/
 	( \
-	  cd $(BBFTPD_SOURCE_DIR)/bbftpd; \
+	  cd $(SOURCE_DIR)/bbftpd; \
 	  ./configure --prefix=$(PKGROOT); \
-	  $(MAKE) _SX=1 ; \
+	  $(MAKE) _SX=1 \
 	)
 	@echo "::: Package $(NAME) build complete :::"
 	
 install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	( \
-          cd $(BBFTPD_SOURCE_DIR)/bbftpd; \
-	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install; \
+	  cd $(SOURCE_DIR)/bbftpd; \
+	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install \
 	)
 	@echo "::: Package $(NAME) install complete :::"
 
 clean::
-	rm -rf $(BBFTPD_SOURCE_DIR)
+	rm -rf $(SOURCE_DIR)

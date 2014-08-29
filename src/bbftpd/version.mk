@@ -1,16 +1,16 @@
-NAME               = bbftpd
-VERSION            = 3.2.1
-RELEASE            = 0
-RPM.EXTRAS         = AutoReq:No
+NAME           = bbftpd
+VERSION        = 3.2.1
+RELEASE        = 0
+PKGROOT        = /opt/bbftp
 
-PKGROOT            = /opt/bbftp
+SRC_SUBDIR     = bbftpd
 
-SRC_SUBDIR         = bbftpd
+SOURCE_NAME    = bbftp-server
+SOURCE_VERSION = $(VERSION)
+SOURCE_SUFFIX  = tar.gz
+SOURCE_PKG     = $(SOURCE_NAME)-$(SOURCE_VERSION).$(SOURCE_SUFFIX)
+SOURCE_DIR     = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
 
-BBFTPD_NAME        = bbftp-server
-BBFTPD_VERSION     = $(VERSION)
-BBFTPD_PKG_SUFFIX  = tar.gz
-BBFTPD_SOURCE_PKG  = $(BBFTPD_NAME)-$(BBFTPD_VERSION).$(BBFTPD_PKG_SUFFIX)
-BBFTPD_SOURCE_DIR  = $(BBFTPD_SOURCE_PKG:%.$(BBFTPD_PKG_SUFFIX)=%)
+TAR_GZ_PKGS    = $(SOURCE_PKG)
 
-TAR_GZ_PKGS        = $(BBFTPD_SOURCE_PKG)
+RPM.EXTRAS     = AutoReq:No

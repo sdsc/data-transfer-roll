@@ -1,15 +1,16 @@
-NAME             = bbcp
-VERSION          = 12.08.17
-RELEASE          = 0
-PKGROOT          = /opt/bbcp
-RPM.EXTRAS         = AutoReq:No
+NAME           = bbcp
+VERSION        = 12.08.17
+RELEASE        = 0
+PKGROOT        = /opt/bbcp
 
-SRC_SUBDIR       = bbcp
+SRC_SUBDIR     = bbcp
 
-BBCP_NAME        = $(NAME)
-BBCP_VERSION     = $(VERSION)
-BBCP_PKG_SUFFIX  = tgz
-BBCP_SOURCE_PKG  = $(BBCP_NAME)-$(BBCP_VERSION).$(BBCP_PKG_SUFFIX)
-BBCP_SOURCE_DIR  = $(BBCP_SOURCE_PKG:%.$(BBCP_PKG_SUFFIX)=%)
+SOURCE_NAME    = $(NAME)
+SOURCE_SUFFIX  = tgz
+SOURCE_VERSION = $(VERSION)
+SOURCE_PKG     = $(SOURCE_NAME)-$(SOURCE_VERSION).$(SOURCE_SUFFIX)
+SOURCE_DIR     = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
 
-TGZ_PKGS         = $(BBCP_SOURCE_PKG)
+TGZ_PKGS       = $(SOURCE_PKG)
+
+RPM.EXTRAS     = AutoReq:No

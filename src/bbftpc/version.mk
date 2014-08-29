@@ -1,15 +1,16 @@
-NAME               = bbftpc
-VERSION            = 3.2.1
-RELEASE            = 0
-PKGROOT            = /opt/bbftp
-RPM.EXTRAS         = AutoReq:No
+NAME           = bbftpc
+VERSION        = 3.2.1
+RELEASE        = 0
+PKGROOT        = /opt/bbftp
 
-SRC_SUBDIR         = bbftpc
+SRC_SUBDIR     = bbftpc
 
-BBFTPC_NAME        = bbftp-client
-BBFTPC_VERSION     = $(VERSION)
-BBFTPC_PKG_SUFFIX  = tar.gz
-BBFTPC_SOURCE_PKG  = $(BBFTPC_NAME)-$(BBFTPC_VERSION).$(BBFTPC_PKG_SUFFIX)
-BBFTPC_SOURCE_DIR  = $(BBFTPC_SOURCE_PKG:%.$(BBFTPC_PKG_SUFFIX)=%)
+SOURCE_NAME    = bbftp-client
+SOURCE_VERSION = $(VERSION)
+SOURCE_SUFFIX  = tar.gz
+SOURCE_PKG     = $(SOURCE_NAME)-$(SOURCE_VERSION).$(SOURCE_SUFFIX)
+SOURCE_DIR     = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
 
-TAR_GZ_PKGS        = $(BBFTPC_SOURCE_PKG)
+TAR_GZ_PKGS    = $(SOURCE_PKG)
+
+RPM.EXTRAS     = AutoReq:No
