@@ -1,5 +1,5 @@
-NAME	   = data-transfer-roll-test
-VERSION	   = 1
-RELEASE	   = 0
+NAME       = data-transfer-roll-test
+VERSION    = 1
+RELEASE    = 0
 
 RPM.EXTRAS = AutoReq:No
