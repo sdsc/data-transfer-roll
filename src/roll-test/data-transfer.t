@@ -58,7 +58,6 @@ SKIP: {
   ok(-f 'motd', 'bbcp works');
   `/bin/rm -f motd`;
 
-  skip 'modules not installed', 6 if ! -f '/etc/profile.d/modules.sh';
   `/bin/ls /opt/modulefiles/applications/bbftp/[0-9]* 2>&1`;
   ok($? == 0, 'bbftp module installed');
   `/bin/ls /opt/modulefiles/applications/bbftp/.version.[0-9]* 2>&1`;
