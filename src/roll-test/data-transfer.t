@@ -73,10 +73,4 @@ SKIP: {
 
 }
 
-# data-transfer-doc.xml
-SKIP: {
-  skip 'not server', 1 if $appliance ne 'Frontend';
-  ok(-d '/var/www/html/roll-documentation/data-transfer', 'doc installed');
-}
-
 `/bin/rm -fr $TESTFILE*`;
