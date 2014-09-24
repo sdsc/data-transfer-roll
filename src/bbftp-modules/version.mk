@@ -1,5 +1,9 @@
-NAME       = bbftp-modules
-VERSION    = 3.2.1
-RELEASE    = 0
+NAME        = bbftp-modules
+RELEASE     = 1
+PKGROOT     = /opt/modulefiles/applications/bbftp
 
-RPM.EXTRAS = AutoReq:No
+VERSION_SRC = $(REDHAT.ROOT)/src/bbftpc/version.mk
+VERSION_INC = version.inc
+include $(VERSION_INC)
+
+RPM.EXTRAS  = AutoReq:No
