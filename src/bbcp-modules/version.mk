@@ -1,8 +1,11 @@
-NAME        = bbcp-modules
-RELEASE     = 1
-PKGROOT     = /opt/modulefiles/applications/bbcp
+PACKAGE     = bbcp
+CATEGORY    = applications
 
-VERSION_SRC = $(REDHAT.ROOT)/src/bbcp/version.mk
+NAME        = $(PACKAGE)-modules
+RELEASE     = 2
+PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
+
+VERSION_SRC = $(REDHAT.ROOT)/src/$(PACKAGE)/version.mk
 VERSION_INC = version.inc
 include $(VERSION_INC)
 
