@@ -13,11 +13,11 @@ Copyright (c) 2000 - 2014 The Regents of the University of California.
 All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </copyright>
 
-<package>bbftpc</package>
-<package>bbftpd</package>
-<package>bbcp</package>
-<package>bbftp-modules</package>
-<package>bbcp-modules</package>
-<package>data-transfer-roll-test</package>
+<package>sdsc-bbftpc</package>
+<package>sdsc-bbftpd</package>
+<package>sdsc-bbcp</package>
+<package>sdsc-bbftp-modules</package>
+<package>sdsc-bbcp-modules</package>
+<package>sdsc-data-transfer-roll-test</package>
 
 </kickstart>

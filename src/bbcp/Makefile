@@ -61,7 +61,23 @@ RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
-include pull.mk
+include $(SDSCDEVEL)/Pull.mk
+include $(SDSCDEVEL)/Rules.mk
+
+LICENSE_FILES = $(SOURCE_DIR)/src/bbcp_Version.C
+
+$(NAME).spec: DESCRIPTION LICENSE
+
+DESCRIPTION:
+	( \
+	  $(DESCRIBE_PKG) \
+	) > $@
+
+LICENSE: $(SRC_DIRS)
+	if ! grep -qF "2012 by the Board of Trustees of the Leland" $(LICENSE_FILES); then \
+	  exit 2; \
+	fi
+	echo LGPLv3+ > $@
 
 build: $(SRC_DIRS)
 	( \
@@ -74,7 +90,8 @@ install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)/bin
 	cp $(SOURCE_DIR)/bin/*/bbcp $(ROOT)/$(PKGROOT)/bin
+	$(INSTALL_LICENSE_FILES)
 	@echo "::: Package $(NAME) install complete :::"
 
 clean::
-	rm -rf $(SOURCE_DIR)
+	rm -rf $(SOURCE_DIR) DESCRIPTION LICENSE

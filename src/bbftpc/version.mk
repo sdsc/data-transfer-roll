@@ -1,6 +1,6 @@
-NAME           = bbftpc
+NAME           = sdsc-bbftpc
 VERSION        = 3.2.1
-RELEASE        = 0
+RELEASE        = 1
 PKGROOT        = /opt/bbftp
 
 SRC_SUBDIR     = bbftpc
