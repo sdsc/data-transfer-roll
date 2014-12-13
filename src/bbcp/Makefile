@@ -64,8 +64,6 @@ include Rules.mk
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
 
-LICENSE_FILES = $(SOURCE_DIR)/src/bbcp_Version.C
-
 $(NAME).spec: DESCRIPTION LICENSE
 
 DESCRIPTION:
@@ -74,9 +72,7 @@ DESCRIPTION:
 	) > $@
 
 LICENSE: $(SRC_DIRS)
-	if ! grep -qF "2012 by the Board of Trustees of the Leland" $(LICENSE_FILES); then \
-	  exit 2; \
-	fi
+	$(CHECK_LICENSE_FILES)
 	echo LGPLv3+ > $@
 
 build: $(SRC_DIRS)

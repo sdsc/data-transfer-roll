@@ -64,8 +64,6 @@ include Rules.mk
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
 
-LICENSE_FILES = $(SOURCE_DIR)/COPYING
-
 $(NAME).spec: DESCRIPTION LICENSE
 
 DESCRIPTION:
@@ -74,9 +72,7 @@ DESCRIPTION:
 	) > $@
 
 LICENSE: $(SRC_DIRS)
-	if ! grep -q "GNU GENERAL PUBLIC LICENSE" $(SOURCE_DIR)/COPYING; then \
-	  exit 2; \
-	fi
+	$(CHECK_LICENSE_FILES)
 	echo GPLv2 > $@
 
 build: $(SRC_DIRS)
