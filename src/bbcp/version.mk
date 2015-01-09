@@ -1,6 +1,6 @@
 NAME           = sdsc-bbcp
-VERSION        = 12.08.17
-RELEASE        = 1
+VERSION        = 14.09.02.00.0
+RELEASE        = 0
 PKGROOT        = /opt/bbcp
 
 SRC_SUBDIR     = bbcp
