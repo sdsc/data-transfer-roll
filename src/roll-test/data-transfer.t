@@ -54,7 +54,7 @@ SKIP: {
   `/usr/sbin/userdel -r $TESTUSER`;
   `/bin/rm -f motd`;
 
-  `$bbcpPath -S "ssh -x -a -oFallBackToRsh=no %I -l %U %H $bbcpPath" localhost:/etc/motd motd`;
+  `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" localhost:/etc/motd motd`;
   ok(-f 'motd', 'bbcp works');
   `/bin/rm -f motd`;
 
