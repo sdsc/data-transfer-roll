@@ -12,28 +12,10 @@ my $installedOnAppliancesPattern = '.';
 my $bbcpPath = '/opt/bbcp/bin/bbcp';
 my $bbftpHome = '/opt/bbftp';
 my $isInstalled = -d $bbftpHome;
+chomp(my $localhost = `hostname`);
 my $output;
 
 my $TESTFILE = 'tmpdt';
-my $TESTPASS = 'tmpdtpass';
-my $TESTUSER = 'tmpdtuser';
-
-open(OUT, ">$TESTFILE.pass.exp");
-print OUT <<END;
-spawn passwd $TESTUSER
-expect -ex "New password: " {send "$TESTPASS\\r"}
-expect -ex "Retype new password: " {send "$TESTPASS\\r"}
-expect -ex "passwd: all" {}
-END
-close(OUT);
-
-open(OUT, ">$TESTFILE.exp");
-print OUT <<END;
-spawn $bbftpHome/bin/bbftp -u $TESTUSER -e "get /etc/motd ./" localhost
-expect -ex "Password:" {send "$TESTPASS\\r"}
-expect -ex "get /etc/motd" {}
-END
-close(OUT);
 
 # data-transfer-common.xml
 if($appliance =~ /$installedOnAppliancesPattern/) {
@@ -45,17 +27,12 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
 SKIP: {
 
   skip 'bbftp not installed', 8 if ! $isInstalled;
-  `/usr/sbin/useradd -d /tmp/$TESTUSER -s /sbin/nologin -g 100 $TESTUSER`;
-  `/usr/bin/expect $TESTFILE.pass.exp`;
-  `$bbftpHome/etc/bbftpd start`;
-  `/usr/bin/expect $TESTFILE.exp`;
-  `$bbftpHome/etc/bbftpd stop`;
-  ok(-f 'motd', 'bbftp works');
-  `/usr/sbin/userdel -r $TESTUSER`;
+  `$bbftpHome/bin/bbftp -E "$bbftpHome/bin/bbftpd -s" -S -e "get /etc/motd ./" $localhost && /usr/bin/cmp /etc/motd ./motd`;
+  ok($? == 0, 'bbftp works');
   `/bin/rm -f motd`;
 
-  `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" localhost:/etc/motd motd`;
-  ok(-f 'motd', 'bbcp works');
+  `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" $localhost:/etc/motd motd && /usr/bin/cmp /etc/motd ./motd`;
+  ok($? == 0, 'bbcp works');
   `/bin/rm -f motd`;
 
   `/bin/ls /opt/modulefiles/applications/bbftp/[0-9]* 2>&1`;
