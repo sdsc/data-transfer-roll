@@ -24,16 +24,26 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
   ok(! $isInstalled, 'data-transfer not installed');
 }
 
+$output = `ssh localhost /bin/echo hello 2>&1`;
+my $canSsh = $output =~ /hello/;
+
 SKIP: {
 
   skip 'bbftp not installed', 8 if ! $isInstalled;
-  `$bbftpHome/bin/bbftp -E "$bbftpHome/bin/bbftpd -s" -S -e "get /etc/motd ./" $localhost && /usr/bin/cmp /etc/motd ./motd`;
-  ok($? == 0, 'bbftp works');
-  `/bin/rm -f motd`;
 
-  `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" $localhost:/etc/motd motd && /usr/bin/cmp /etc/motd ./motd`;
-  ok($? == 0, 'bbcp works');
-  `/bin/rm -f motd`;
+  SKIP: {
+    skip 'cannot ssh without passphrase', 1 if ! $canSsh;
+    `$bbftpHome/bin/bbftp -E "$bbftpHome/bin/bbftpd -s" -S -e "get /etc/motd ./" $localhost && /usr/bin/cmp /etc/motd ./motd`;
+    ok($? == 0, 'bbftp works');
+    `/bin/rm -f motd`;
+  }
+
+  SKIP: {
+    skip 'cannot ssh without passphrase', 1 if ! $canSsh;
+    `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" $localhost:/etc/motd motd && /usr/bin/cmp /etc/motd ./motd`;
+    ok($? == 0, 'bbcp works');
+    `/bin/rm -f motd`;
+  }
 
   `/bin/ls /opt/modulefiles/applications/bbftp/[0-9]* 2>&1`;
   ok($? == 0, 'bbftp module installed');
