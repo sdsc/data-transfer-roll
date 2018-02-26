@@ -1,6 +1,6 @@
 NAME           = sdsc-bbcp
 VERSION        = 14.09.02.00.0
-RELEASE        = 0
+RELEASE        = 1
 PKGROOT        = /opt/bbcp
 
 SRC_SUBDIR     = bbcp
@@ -13,4 +13,5 @@ SOURCE_DIR     = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
 
 TGZ_PKGS       = $(SOURCE_PKG)
 
-RPM.EXTRAS     = AutoReq:No
+RPM.EXTRAS     = AutoReq:No\nAutoProv:No
+RPM.PREFIX     = $(PKGROOT)
