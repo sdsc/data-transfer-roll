@@ -87,9 +87,9 @@ To run the test scripts execute the following command(s):
 % /root/rolltests/data-transfer.t 
 ```
 
-This test temporarily adds a user, so it must be run as root.  To run
-successfully, it requires a passwordless ssh key be added to root's
-~/.ssh/authorized_keys.
+To run successfully, this test must be run by a user that can ssh to localhost
+without a passphrase.
+
 
 ## License
 
