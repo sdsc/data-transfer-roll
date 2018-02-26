@@ -55,8 +55,19 @@ To install, execute these instructions on a Rocks frontend:
 % rocks enable roll data-transfer
 % cd /export/rocks/install
 % rocks create distro
-% rocks run roll data-transfer | bash
 ```
+
+Subsequent installs of compute and login nodes will then include the contents
+of the data-transfer-roll.  To avoid cluttering the cluster frontend with unused
+software, the data-transfer-roll is configured to install only on compute and
+login nodes. To force installation on your frontend, run this command after
+adding the abinit-roll to your distro
+
+```shell
+% rocks run roll data-transfer host=NAME | bash
+```
+
+where NAME is the DNS name of a compute or login node in your cluster.
 
 In addition to the software itself, the roll installs environment module files
 in:
