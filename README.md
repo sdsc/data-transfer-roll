@@ -61,7 +61,7 @@ Subsequent installs of compute and login nodes will then include the contents
 of the data-transfer-roll.  To avoid cluttering the cluster frontend with unused
 software, the data-transfer-roll is configured to install only on compute and
 login nodes. To force installation on your frontend, run this command after
-adding the abinit-roll to your distro
+adding the data-transfer-roll to your distro
 
 ```shell
 % rocks run roll data-transfer host=NAME | bash
