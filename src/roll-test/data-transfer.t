@@ -40,7 +40,7 @@ SKIP: {
 
   SKIP: {
     skip 'cannot ssh without passphrase', 1 if ! $canSsh;
-    `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" $localhost:/etc/motd motd && /usr/bin/cmp /etc/motd ./motd`;
+    `$bbcpPath -4 -S "ssh -x -a -oFallBackToRsh=no %H $bbcpPath" $localhost:/etc/motd ./motd && /usr/bin/cmp /etc/motd ./motd`;
     ok($? == 0, 'bbcp works');
     `/bin/rm -f motd`;
   }
